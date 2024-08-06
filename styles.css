@@ -1,0 +1,78 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #e5e5e5;
+    background-color: #1e1e1e;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Navbar Styles */
+nav {
+    background-color: #282a36;
+}
+
+nav a {
+    color: #f8f8f2;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #50fa7b;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #282a36;
+    color: #f8f8f2;
+}
+
+footer a {
+    color: #50fa7b;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Form Styles */
+input, textarea {
+    background-color: #3e3e3e;
+    color: #dcdcdc;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+}
+
+button {
+    background-color: #50fa7b;
+    color: #282a36;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Minimalistic code editor-like styles */
+.editor {
+    background-color: #2e2e2e;
+    color: #dcdcdc;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20px;
+    border-radius: 8px;
+    overflow: auto;
+    border: 1px solid #444;
+}
+
+.editor h1, .editor h2 {
+    color: #f8f8f2;
+}
