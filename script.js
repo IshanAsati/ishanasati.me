@@ -1,33 +1,28 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Load Navbar
-    fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar').innerHTML = data;
-        })
-        .catch(error => console.error('Error loading navbar:', error));
+let startTime;
+let timer;
+const input = document.getElementById('input');
+const textElement = document.getElementById('text');
+const timeElement = document.getElementById('time');
+const wpmElement = document.getElementById('wpm');
 
-    // Highlight code editor-like elements on page load
-    const editorElements = document.querySelectorAll('.editor');
-    editorElements.forEach(el => {
-        el.style.boxShadow = '0 0 10px rgba(255, 255, 255, 0.2)';
-    });
+input.addEventListener('focus', startTest);
+input.addEventListener('input', calculateWPM);
 
-    // Contact form submission
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            if (name && email && message) {
-                // Display a minimal success message
-                document.getElementById('formStatus').classList.remove('hidden');
-                contactForm.reset(); // Clear the form
-            }
-        });
+function startTest() {
+    if (!startTime) {
+        startTime = new Date();
+        timer = setInterval(updateTime, 1000);
     }
-});
+}
+
+function updateTime() {
+    const elapsed = Math.floor((new Date() - startTime) / 1000);
+    timeElement.textContent = elapsed;
+}
+
+function calculateWPM() {
+    const elapsed = (new Date() - startTime) / 60000;
+    const wordsTyped = input.value.trim().split(/\s+/).length;
+    const wpm = Math.round(wordsTyped / elapsed);
+    wpmElement.textContent = wpm;
+}

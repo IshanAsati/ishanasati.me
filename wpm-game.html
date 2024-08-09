@@ -32,7 +32,7 @@
             border-radius: 0.25rem;
             border: 1px solid #444;
             background-color: #333;
-            color: #fff;
+            color: #ffffff;
         }
         .hidden {
             display: none;
@@ -43,108 +43,135 @@
         .incorrect {
             color: #f44336;
         }
+        .btn-start {
+            background-color: #007bff; /* Blue accent */
+            border: none;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+        .btn-start:hover {
+            background-color: #0056b3;
+        }
+        header, footer {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+        }
+        footer {
+            margin-top: 2rem;
+        }
     </style>
 </head>
 <body>
-    <!-- Include Navbar -->
-    <div id="navbar"></div>
+<!-- Include Navbar -->
+<div id="navbar"></div>
 
-    <header class="bg-gray-800 text-white p-4 text-center">
-        <h1 class="text-4xl">Typing Speed Game</h1>
-    </header>
-    
-    <main class="container mx-auto p-4">
-        <section class="game-container">
-            <div class="text-to-type" id="textToType">Click "Start" to begin typing the text.</div>
-            <input type="text" id="typingInput" class="input-field hidden" placeholder="Start typing here..." />
-            <button id="startButton" class="px-4 py-2 bg-green-500 text-white rounded mt-4">Start</button>
-            <div id="results" class="mt-4 hidden">
-                <p>Time: <span id="timeTaken">0</span> seconds</p>
-                <p>WPM: <span id="wpmScore">0</span></p>
-            </div>
-        </section>
-    </main>
-    
-    <footer class="p-4 text-center bg-gray-800 text-white">
-        <p>&copy; 2024 Ishan Asati</p>
-        <p>Contact: <a href="mailto:ishanlikecube@gmail.com" class="hover:underline">ishanlikecube@gmail.com</a></p>
-    </footer>
+<header>
+    <h1 class="text-3xl">Typing Speed Game</h1>
+</header>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const textToTypeElement = document.getElementById('textToType');
-            const typingInput = document.getElementById('typingInput');
-            const startButton = document.getElementById('startButton');
-            const resultsElement = document.getElementById('results');
-            const timeTakenElement = document.getElementById('timeTaken');
-            const wpmScoreElement = document.getElementById('wpmScore');
+<main class="container mx-auto p-4">
+    <section class="game-container">
+        <div class="text-to-type" id="textToType">Click "Start" to begin typing the text.</div>
+        <input type="text" id="typingInput" class="input-field hidden" placeholder="Start typing here..." />
+        <button id="startButton" class="btn-start mt-4">Start</button>
+        <div id="results" class="mt-4 hidden">
+            <p>Time: <span id="timeTaken">0</span> seconds</p>
+            <p>WPM: <span id="wpmScore">0</span></p>
+        </div>
+    </section>
+</main>
 
-            const sampleText = "The quick brown fox jumps over the lazy dog";
-            let startTime, endTime;
-            let isTyping = false;
+<footer>
+    <p>&copy; 2024 Ishan Asati. All rights reserved.</p>
+    <p>Contact: <a href="mailto:ishanlikecube@gmail.com" class="hover:underline">ishanlikecube@gmail.com</a></p>
+</footer>
 
-            function startGame() {
-                typingInput.value = '';
-                typingInput.classList.remove('hidden');
-                startButton.classList.add('hidden');
-                resultsElement.classList.add('hidden');
-                textToTypeElement.innerHTML = formatText(sampleText);
-                typingInput.focus();
-                startTime = new Date();
-                isTyping = true;
-            }
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load Navbar
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navbar:', error));
 
-            function formatText(text) {
-                return text.split(' ').map(word => `<span>${word}</span>`).join(' ');
-            }
+        const textToTypeElement = document.getElementById('textToType');
+        const typingInput = document.getElementById('typingInput');
+        const startButton = document.getElementById('startButton');
+        const resultsElement = document.getElementById('results');
+        const timeTakenElement = document.getElementById('timeTaken');
+        const wpmScoreElement = document.getElementById('wpmScore');
 
-            function updateText() {
+        const sampleText = "The quick brown fox jumps over the lazy dog";
+        let startTime, endTime;
+        let isTyping = false;
+
+        function startGame() {
+            typingInput.value = '';
+            typingInput.classList.remove('hidden');
+            startButton.classList.add('hidden');
+            resultsElement.classList.add('hidden');
+            textToTypeElement.innerHTML = formatText(sampleText);
+            typingInput.focus();
+            startTime = new Date();
+            isTyping = true;
+        }
+
+        function formatText(text) {
+            return text.split(' ').map(word => `<span>${word}</span>`).join(' ');
+        }
+
+        function updateText() {
+            const typedText = typingInput.value;
+            const words = sampleText.split(' ');
+            const typedWords = typedText.split(' ');
+            const highlightedText = words.map((word, index) => {
+                const typedWord = typedWords[index] || '';
+                if (typedWord === word) {
+                    return `<span class="highlight">${word}</span>`;
+                } else if (word.startsWith(typedWord)) {
+                    return `<span class="correct">${word}</span>`;
+                } else {
+                    return `<span class="incorrect">${word}</span>`;
+                }
+            }).join(' ');
+            textToTypeElement.innerHTML = highlightedText;
+        }
+
+        function endGame() {
+            if (isTyping) {
+                endTime = new Date();
+                const timeTaken = ((endTime - startTime) / 1000).toFixed(2);
                 const typedText = typingInput.value;
-                const words = sampleText.split(' ');
-                const typedWords = typedText.split(' ');
-                const highlightedText = words.map((word, index) => {
-                    const typedWord = typedWords[index] || '';
-                    if (typedWord === word) {
-                        return `<span class="highlight">${word}</span>`;
-                    } else if (word.startsWith(typedWord)) {
-                        return `<span class="correct">${word}</span>`;
-                    } else {
-                        return `<span class="incorrect">${word}</span>`;
-                    }
-                }).join(' ');
-                textToTypeElement.innerHTML = highlightedText;
+                const wpmScore = calculateWPM(timeTaken, typedText.length);
+
+                timeTakenElement.textContent = timeTaken;
+                wpmScoreElement.textContent = wpmScore;
+                resultsElement.classList.remove('hidden');
+                typingInput.classList.add('hidden');
+                startButton.classList.remove('hidden');
+                isTyping = false;
             }
+        }
 
-            function endGame() {
-                if (isTyping) {
-                    endTime = new Date();
-                    const timeTaken = ((endTime - startTime) / 1000).toFixed(2);
-                    const typedText = typingInput.value;
-                    const wpmScore = calculateWPM(timeTaken, typedText.length);
+        function calculateWPM(time, textLength) {
+            const minutes = time / 60;
+            return Math.round((textLength / 5) / minutes);
+        }
 
-                    timeTakenElement.textContent = timeTaken;
-                    wpmScoreElement.textContent = wpmScore;
-                    resultsElement.classList.remove('hidden');
-                    typingInput.classList.add('hidden');
-                    startButton.classList.remove('hidden');
-                    isTyping = false;
-                }
+        startButton.addEventListener('click', startGame);
+        typingInput.addEventListener('input', function() {
+            updateText();
+            if (typingInput.value === sampleText) {
+                endGame();
             }
-
-            function calculateWPM(time, textLength) {
-                const minutes = time / 60;
-                return Math.round((textLength / 5) / minutes);
-            }
-
-            startButton.addEventListener('click', startGame);
-            typingInput.addEventListener('input', function() {
-                updateText();
-                if (typingInput.value === sampleText) {
-                    endGame();
-                }
-            });
         });
-    </script>
-    <div id="navbar"></div>
+    });
+</script>
 </body>
 </html>

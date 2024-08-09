@@ -1,14 +1,30 @@
-<nav class="bg-gray-900 text-white shadow-md">
-    <div class="container mx-auto flex justify-between items-center p-4">
-        <!-- Logo/Brand -->
-        <a href="index.html" class="text-2xl font-bold hover:text-green-500">Ishan Asati</a>
-
-        <!-- Navigation Links -->
-        <div class="space-x-4">
-            <a href="index.html" class="hover:text-green-500">Home</a>
-            <a href="about.html" class="hover:text-green-500">About Me</a>
-            <a href="wpm-game.html" class="hover:text-green-500">WPM Game</a>
-            <a href="contact.html" class="hover:text-green-500">Contact</a>
-        </div>
-    </div>
+<nav style="background-color: #1F1F1F; color: #E0E0E0; position: fixed; top: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); padding: 10px 0; display: flex; justify-content: center; align-items: center;">
+    <ul style="display: flex; justify-content: center; align-items: center; margin: 0; padding: 0; list-style: none;">
+        <li style="margin: 0 30px;">
+            <a href="index.html" style="color: #E0E0E0; text-decoration: none; font-weight: 500; transition: color 0.3s ease;">
+                <img src="https://raw.githubusercontent.com/IshanAsati/ishanasati.me/main/favicon.ico" alt="Home" style="width: 30px; height: 30px; transition: transform 0.3s ease;">
+            </a>
+        </li>
+        <li style="margin: 0 20px;">
+            <a href="index.html" style="color: #E0E0E0; text-decoration: none; font-weight: 500; transition: color 0.3s ease;">Home</a>
+        </li>
+        <li style="margin: 0 20px;">
+            <a href="about.html" style="color: #E0E0E0; text-decoration: none; font-weight: 500; transition: color 0.3s ease;">About</a>
+        </li>
+        <li style="margin: 0 20px;">
+            <a href="wpm-game.html" style="color: #E0E0E0; text-decoration: none; font-weight: 500; transition: color 0.3s ease;">WPM Game</a>
+        </li>
+        <li style="margin: 0 20px;">
+            <a href="contact.html" style="color: #E0E0E0; text-decoration: none; font-weight: 500; transition: color 0.3s ease;">Contact</a>
+        </li>
+    </ul>
 </nav>
+
+<script>
+    // Load the navbar HTML
+    fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+        });
+</script>
