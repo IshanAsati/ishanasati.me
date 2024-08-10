@@ -3,49 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
-    <link href="styles.css" rel="stylesheet">
-    <link rel="icon" href="https://raw.githubusercontent.com/IshanAsati/ishanasati.me/main/favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<!-- Navbar -->
-<div id="navbar">
-    <nav>
-        <ul>
-            <li><a href="index.html"><img src="https://raw.githubusercontent.com/IshanAsati/ishanasati.me/main/favicon.ico" alt="Home" style="width: 30px; height: 30px; transition: transform 0.3s ease;"></a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-</div>
+<div id="navbar"></div>
 
-<!-- Main Content -->
-<main>
-    <h1>Contact Me</h1>
-    <form id="contactForm" action="https://formspree.io/f/xkgwjoae" method="POST">
-        <div class="form-group">
+<main class="container mx-auto p-4">
+    <section class="game-container">
+        <h1 class="text-4xl text-center mb-4">Contact Me</h1>
+        <form id="contactForm" action="mailto:ishanasati@ishanasati.me" method="post" enctype="text/plain">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
+            <input type="text" id="name" name="name" class="input-field" required>
+
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
+            <input type="email" id="email" name="email" class="input-field" required>
+
             <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-        </div>
-        <button type="submit">Send</button>
-    </form>
-    <div id="formStatus" class="hidden">Thank you for your message!</div>
+            <textarea id="message" name="message" class="input-field" rows="5" required></textarea>
+
+            <button type="submit" class="px-4 py-2 bg-green-500 text-white rounded mt-4">Send Message</button>
+        </form>
+        <div id="formStatus" class="hidden mt-4">Your message has been sent successfully!</div>
+    </section>
 </main>
 
-<!-- Footer -->
-<footer>
+<footer class="p-4 text-center bg-gray-800 text-white">
     <p>&copy; 2024 Ishan Asati</p>
-    <p>Contact: <a href="mailto:ishanasati@ishanasati.me">ishanasati@ishanasati.me</a></p>
+    <p>Contact: <a href="mailto:ishanasati@ishanasati.me" class="hover:underline">ishanasati@ishanasati.me</a></p>
 </footer>
 
 <script src="script.js"></script>
