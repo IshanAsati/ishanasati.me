@@ -1,25 +1,25 @@
 /* Global Styles */
 body {
-    background-color: #121212; /* Dark background */
-    color: #E0E0E0; /* Soft white text */
-    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+    color: #E0E0E0;
+    font-family: "Victor Mono Thin", "Arial Rounded MT Bold";
     margin: 0;
     padding: 0;
     line-height: 1.6;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensure body covers full viewport height */
+    min-height: 100vh;
 }
 
 /* Navbar */
 nav {
-    background-color: #1F1F1F; /* Dark background */
-    color: #E0E0E0; /* Soft white text */
+    background-color: #1F1F1F;
+    color: #E0E0E0;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     padding: 10px 0;
     display: flex;
     justify-content: center;
@@ -40,19 +40,18 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #E0E0E0; /* White text */
+    color: #E0E0E0;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #00BCD4; /* Neon blue accent on hover */
+    color: #00BCD4;
 }
 
-/* Favicon as Home Link */
 nav ul li.favicon {
-    margin: 0 30px; /* More space around the favicon */
+    margin: 0 30px;
 }
 
 nav ul li.favicon img {
@@ -62,16 +61,16 @@ nav ul li.favicon img {
 }
 
 nav ul li.favicon img:hover {
-    transform: scale(1.1); /* Slightly enlarge on hover */
+    transform: scale(1.1);
 }
 
 /* Header */
 header {
-    background-color: #1F1F1F; /* Dark background */
-    color: #FFFFFF; /* White text */
-    padding: 120px 20px; /* Extra padding for a grand entrance */
+    background-color: #1F1F1F;
+    color: #FFFFFF;
+    padding: 60px 20px;
     text-align: center;
-    margin-top: 60px; /* Offset for the fixed navbar */
+    margin-top: 60px;
 }
 
 header h1 {
@@ -82,31 +81,31 @@ header h1 {
 
 header p {
     font-size: 1.2rem;
-    color: #B0BEC5; /* Light gray for secondary text */
+    color: #B0BEC5;
 }
 
 /* Main Content */
 main {
-    padding: 60px 20px; /* Added padding for better spacing */
-    text-align: center; /* Center the text in the main section */
-    flex: 1; /* Allow main to expand and push footer down */
+    padding: 30px 20px;
+    text-align: center;
+    flex: 1;
 }
 
 main h2 {
     font-size: 2rem;
-    color: #FFFFFF; /* White text */
-    margin-bottom: 20px;
+    color: #FFFFFF;
+    margin-bottom: 5px;
     font-weight: 600;
 }
 
 main p {
-    color: #B0BEC5; /* Light gray text */
+    color: #B0BEC5;
     font-size: 1rem;
     margin-bottom: 20px;
 }
 
 a {
-    color: #00BCD4; /* Neon blue accent for links */
+    color: #00BCD4;
 }
 
 a:hover {
@@ -115,15 +114,15 @@ a:hover {
 
 /* Footer */
 footer {
-    background-color: #1F1F1F; /* Dark background */
-    color: #E0E0E0; /* Soft white text */
+    background-color: #1F1F1F;
+    color: #E0E0E0;
     text-align: center;
     padding: 20px;
-    position: relative; /* Changed to relative */
+    position: relative;
     bottom: 0;
     width: 100%;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.3); /* Shadow for depth */
-    margin-top: auto; /* Push footer to the end of the page */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.3);
+    margin-top: auto;
 }
 
 footer p {
@@ -133,7 +132,7 @@ footer p {
 
 /* Contact Form */
 form {
-    background-color: #2E2E2E; /* Slightly lighter background */
+    background-color: #2E2E2E;
     border-radius: 8px;
     padding: 20px;
     margin: 0 auto;
@@ -166,8 +165,8 @@ form {
 }
 
 button {
-    background-color: #00BCD4; /* Neon blue button */
-    color: #FFFFFF; /* White text */
+    background-color: #00BCD4;
+    color: #FFFFFF;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
@@ -177,7 +176,7 @@ button {
 }
 
 button:hover {
-    background-color: #0097A7; /* Darker blue on hover */
+    background-color: #0097A7;
 }
 
 /* WPM Game */
@@ -188,15 +187,15 @@ button:hover {
 }
 
 .correct {
-    color: #00BCD4; /* Neon blue for correct text */
+    color: #00BCD4;
 }
 
 .incorrect {
-    color: #FF5722; /* Orange for incorrect text */
+    color: #FF5722;
 }
 
 .remaining {
-    color: #B0BEC5; /* Light gray for remaining text */
+    color: #B0BEC5;
 }
 
 .input_area {
@@ -214,4 +213,9 @@ button:hover {
 .metrics div {
     font-size: 1rem;
     margin-bottom: 10px;
+}
+
+ol, ul {
+    list-style-position: inside;
+    padding: 0;
 }
