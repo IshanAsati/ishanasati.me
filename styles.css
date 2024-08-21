@@ -2,7 +2,7 @@
 body {
     background-color: #121212;
     color: #E0E0E0;
-    font-family: "Victor Mono Thin", "Arial Rounded MT Bold";
+    font-family: "Victor Mono Thin", "Arial Rounded MT Bold", sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -136,7 +136,9 @@ form {
     border-radius: 8px;
     padding: 20px;
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 100%;
+    width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .form-group {
@@ -151,12 +153,18 @@ form {
 
 .form-group input,
 .form-group textarea {
-    width: 100%;
+    width: calc(100% - 22px); /* Adjust for padding and border */
     padding: 10px;
     border: 1px solid #3F3F3F;
     border-radius: 4px;
     background-color: #1F1F1F;
     color: #E0E0E0;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #00BCD4;
 }
 
 .form-group textarea {
